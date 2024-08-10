@@ -12,7 +12,7 @@ public class condtionals {
         }
             else{
                 if(age<18){
-                    System.out.println("Ghar chlo");
+                    System.out.println("Can't vote");
                 }
             }
         }
