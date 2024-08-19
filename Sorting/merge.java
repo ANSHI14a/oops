@@ -29,7 +29,7 @@ public class merge{
     }
     public static void divide(int[]arr, int si, int ei){
         if(si>= ei){
-            return;
+            return; 
         }
         int mid=si+(ei-si)/2;
         divide(arr, si, mid);
