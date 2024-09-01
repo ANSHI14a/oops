@@ -1,5 +1,6 @@
 package LinkedList;
-
+import java.util.*;
+import java.util.LinkedList;
  class LL {
     Node head;
     private int size;
@@ -91,11 +92,15 @@ public void printList(){
         secondLast.next=null;
 
     }
+    public int getSize() {
+        return size;
+    }
 
     
 
     public static void main(String[] args) {
-        LL list= new LL();
+        // LinkedList<String> list = new LinkedList<String>();
+         LL list= new LL();
         list.addFirst("a");
         list.addFirst("is");
         list.printList();
@@ -109,5 +114,14 @@ public void printList(){
         list.deleteLast();
         list.printList();
 
+        System.out.println(list.getSize());
+
+        list.addFirst("get size");
+        System.out.println(list.getSize());
+
+        
+
     }
+
+    
 }
