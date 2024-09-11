@@ -1,4 +1,5 @@
 package Binarytree;
+import java.util.*;
 
 public class binarytree {
     static class Node{
@@ -27,11 +28,112 @@ public class binarytree {
 
         }
     }
+    //(recursive way ) pre- order
+    public static void preorder(Node root){
+        if(root == null){
+            return;
+        }
+        System.out.println(root.data);
+    
+        preorder(root.left);
+        preorder(root.right);
+    }
+
+    public static void inorder(Node root){
+        if(root == null){
+            return;
+        }
+        inorder(root.left);
+        System.out.println(root.data+" ");
+        inorder(root.right);
+    }
+
+    public static void postorder(Node root){
+        if(root == null){
+            return;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.println(root.data+" ");
+
+
+
+    }
+
+
+
+    public static void LevelOrder(Node root){
+        if(root == null){
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            Node currNode = q.remove();
+            if(currNode==null){
+
+                System.out.println();
+                if(q.isEmpty()){
+                    break;
+                }
+                else{
+                    q.add(null);
+                }
+            }
+            else{
+                System.out.println(currNode.data+" ");
+                if(currNode.left != null){
+                    q.add(currNode.left);
+
+                }
+                if(currNode.right != null){
+                    q.add(currNode.right);
+
+                }
+
+            }
+
+        }
+    }
+//count of Nodes O(N) because it has touched each  and every Node
+    public static int countofNodes(Node root){
+        if(root == null){
+            return 0;
+        }
+        int leftNodes = countofNodes(root.left);
+        int rightNodes = countofNodes(root.right);
+
+        return leftNodes + rightNodes +1;
+
+    }
+    //sum Of Nodes
+    public static int sumOfNodes(Node root){
+        if(root == null){
+            return 0;
+
+        }
+        int leftSum = sumOfNodes(root.left);
+        int rightSum = sumOfNodes(root.right);
+
+        return leftSum + rightSum + root.data;
+    }
+
+    //height of tree
+    //(distance of root level to leaf level)
+    //in this case it is three
+    
     public static void main(String[] args) {
         int[]nodes= {1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1 , -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(root.data);
+       // System.out.println(root.data);
+       //preorder(root);
+       //inorder(root);
+       //postorder(root);
+      // LevelOrder(root);
+      //System.out.println(countofNodes(root));
+      //System.out.println(sumOfNodes(root));
 
     }
 }
