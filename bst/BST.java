@@ -1,5 +1,5 @@
 package bst;
-
+import java.util.ArrayList;
 public class BST {
     static class Node{
         int data;
@@ -98,23 +98,59 @@ public class BST {
         }
         return root;
     }
+    //print in range
+    public static void printInRange(Node root, int X, int Y){
+        if(root == null){
+            return;
+        }
+
+        if(root.data >=X  && root.data <=Y){
+            printInRange(root.left, X, Y);
+            System.out.println(root.data + " ");
+            printInRange(root.right, X, Y);
+
+
+        }
+        
+        else if(root.data >= Y){
+            printInRange(root.left, X, Y);
+
+        }
+        else{
+            printInRange(root.right, X, Y);
+        }
+    }
+
+    public static void printRoot2leaf(Node root, ArrayList<Integer> path){
+       if(root == null){
+        return;
+       }
+       path.add(root.data);
+
+        path.add(root.data);
+        printRoot2leaf(root.left, path);
+         printRoot2leaf(root.right, path);
+         path.remove(path.size() -1);
+    }
 
     
     public static void main(String[] args) {
-        int values[] = {5,1,3,4,2,7};
+        int values[] = {8,5,3,1,4,6,10,11,14};
         Node root = null;
         for(int i=0;i<values.length;i++){
-            root = insert(root,values[i]);
-        }
+           root = insert(root,values[i]);
+         }
         //inorder(root);
-        if(search(root, 1)){
-            System.out.println("found");
-        }
-        else{
-            System.out.println("Not found");
-        }
-        delete(root,4);
+        // if(search(root, 1)){
+        //     System.out.println("found");
+        // }
+        // else{
+        //     System.out.println("Not found");
+        // }
+        // delete(root,4);
         inorder(root);
+        System.out.println();
+        printInRange(root, 6,10);
 
 
 
